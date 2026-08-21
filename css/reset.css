@@ -1,0 +1,18 @@
+@charset "utf-8";
+
+:root {
+    --main-font: "Sweet";
+    /* --main-font: "Sweet"; */
+    
+    --white: #fff;
+    --black: #000;
+    --black100: #4d4c4c;
+    --black200: #a6a6a6;
+    --black300: #cccccc;
+    --cursor-border: rgba(0, 0, 0, 0.65);
+    --cursor-hover: rgba(0, 0, 0, 0.06);
+    
+    --work-list-bg: #b0bad3;
+
+
+}
