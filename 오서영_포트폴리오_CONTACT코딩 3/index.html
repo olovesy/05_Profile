@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>SEOYOUNG OH</title>
+
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/font.css">
+  <link rel="stylesheet" href="./css/common.css">
+  <link rel="stylesheet" href="./css/media.css">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
+  <script src="./script.js" defer></script>
+</head>
+
+<body>
+
+
+  <header id="header">
+    <div class="pc">
+      <h2 class="logo ">
+        <a href="./index.html" data-en="seoyoung oh" data-ko="오서영">seoyoung oh</a>
+      </h2>
+
+      <nav class="nav nav_set">
+        <ul>
+          <li>
+            <a href="#about" data-en="ABOUT" data-ko="소개">ABOUT</a>
+          </li>
+
+          <li>
+            <a href="#work" data-en="WORK" data-ko="작업">WORK</a>
+          </li>
+
+          <li>
+            <a href="#contact" data-en="CONTACT" data-ko="연락">CONTACT</a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- 번역 -->
+      <div class="translation">
+
+        <button type="button" class="lang active" data-lang="en">
+          EN
+        </button>
+
+        <span>/</span>
+
+        <button type="button" class="lang" data-lang="ko">
+          KO
+        </button>
+
+      </div> <!-- .translation -->
+    </div><!-- .pc -->
+
+
+
+  </header> <!-- #header -->
+
+
+  <section id="contents">
+    <article class="cover" id="cover">
+      <article class="covertext">
+        <div class="desc1 maintitle maintitle_weight">
+          <p data-en="Hello" data-ko="안녕하세요">
+            Hello
+          </p>
+          <p data-en="I'm Seoyoung." data-ko="오서영입니다.">
+            I'm Seoyoung.
+          </p>
+
+        </div>
+
+        <div class="desc2 maintitle_small">
+          <p data-en="I connect design with code" data-ko="디자인의 가치를 코드로 연결해,">
+            I connect design with code
+          </p>
+
+          <p data-en="to create better web experiences." data-ko="더 나은 웹 경험을 만듭니다.">
+            to create better web experiences.
+          </p>
+        </div>
+      </article>
+
+
+      <article class="coverimg">
+
+        <figure>
+          <img src="./img/img.png" alt="">
+        </figure>
+
+      </article>
+
+    </article> <!-- .cover -->
+
+    <article class="about" id="about">
+      <div class="about_text ">
+        <div class="left">
+          <div class="about1 subtitle">
+            <p>01 / about</p>
+          </div>
+          <div class="about1_1 maintitle2 ">
+            <p>I create quiet,</p>
+            <p>clear, and</p>
+            <p>meaningful</p>
+            <p>experiences.</p>
+          </div>
+        </div> <!-- .left_2 -->
+
+        <div class="right_2">
+          <div class="aboutmemain title_small">about me</div>
+          <div class="aboutmedesc normalfont">
+            <p>I observe small details and turn</p>
+            <p>them into simple visual experiences.</p>
+            <p>I value clarity, curiosity, and</p>
+            <p>thoughtful connections.</p>
+          </div>
+
+          <dl class="about_status normalfont">
+            <div>
+              <dt data-en="ROLE" data-ko="역할">ROLE</dt>
+              <dd data-en="DESIGNER / DEVELOPER" data-ko="디자이너 / 개발자">
+                DESIGNER / DEVELOPER
+              </dd>
+            </div>
+
+            <div>
+              <dt data-en="FOCUS" data-ko="주요 분야">FOCUS</dt>
+              <dd data-en="VISUAL IDENTITY / WEB" data-ko="비주얼 아이덴티티 / 웹">
+                VISUAL IDENTITY / WEB
+              </dd>
+            </div>
+          </dl>
+
+        </div><!-- .right_2 -->
+      </div><!-- .about_text -->
+    </article> <!-- .about -->
+
+
+   <article class="work" id="work">
+  <div class="work_left">
+    <div class="subtitle">
+      <p>02 / SELECTED WORK</p>
+    </div>
+
+    <div class="maintitle2">
+      <p>Selected projects.</p>
+    </div>
+  </div>
+
+  <div class="work_slider">
+    <div class="work_list">
+      <figure class="work_item1 workimg">
+        <img src="./img/work01.png" alt="project 01">
+      </figure>
+
+      <figure class="work_item2 workimg">
+        <img src="./img/work02.PNG" alt="project 02">
+      </figure>
+
+      <figure class="work_item3 workimg">
+        <img src="./img/work02.PNG" alt="project 03">
+      </figure>
+
+      <figure class="work_item4 workimg">
+        <img src="./img/work01.png" alt="project 04">
+      </figure>
+    </div>
+
+    <p class="work_guide">DRAG OR SCROLL TO EXPLORE</p>
+  </div>
+</article>
+
+    <article class="contact" id="contact">
+      <div class="contact_left">
+        <div class="contact_label subtitle">
+          <p data-en="03 / CONTACT" data-ko="03 / 연락">03 / CONTACT</p>
+        </div>
+
+        <div class="contact_title maintitle2">
+          <p data-en="Let’s create" data-ko="좋은 아이디어를">Let’s turn</p>
+          <p data-en="something meaningful" data-ko="의미 있는 경험으로">thoughtful ideas</p>
+          <p data-en="together." data-ko="만들어갑니다.">into experiences.</p>
+        </div>
+
+        <div class="contact_intro maintitle_small">
+          <p data-en="Have a project, an idea, or just want to say hello? Feel free to get in touch."
+            data-ko="프로젝트나 아이디어가 있거나, 가볍게 인사하고 싶다면 언제든 연락해 주세요.">Have a project, an idea, or just want to say hello?
+            Feel free to get in touch.</p>
+        </div>
+
+      </div>
+
+      <div class="contact_right">
+        <dl class="contact_status normalfont">
+          <div>
+            <dt data-en="LOCATION" data-ko="위치">LOCATION</dt>
+            <dd data-en="SEOUL, KOREA" data-ko="서울, 대한민국">SEOUL, KOREA</dd>
+          </div>
+          <div>
+            <dt data-en="AVAILABILITY" data-ko="작업 가능 여부">AVAILABILITY</dt>
+            <dd data-en="OPEN TO WORK" data-ko="협업 가능">OPEN TO WORK</dd>
+          </div>
+          <div>
+            <dt data-en="TIMEZONE" data-ko="시간대">TIMEZONE</dt>
+            <dd>GMT+9</dd>
+          </div>
+        </dl>
+
+        <div class="contact_links normalfont">
+          <a href="mailto:hello@seoyoung.com">
+            <span data-en="EMAIL" data-ko="이메일">EMAIL</span>
+            <em>seoyoung.oh@outlook.com</em>
+          </a>
+          <a href="tel:01000000000">
+            <span data-en="PHONE" data-ko="전화번호">PHONE</span>
+            <em>010-7446-1647</em>
+          </a>
+          <a href="#" aria-label="GitHub link placeholder">
+            <span data-en="GITHUB" data-ko="깃허브">GITHUB</span>
+            <em>github.com/username</em>
+            <b aria-hidden="true">↗</b>
+          </a>
+          <a href="#" aria-label="Notion link placeholder">
+            <span data-en="NOTION" data-ko="노션">NOTION</span>
+            <em>notion.site/portfolio</em>
+            <b aria-hidden="true">↗</b>
+          </a>
+        </div>
+      </div>
+    </article> <!-- .contact -->
+
+
+
+
+  </section> <!-- #contents -->
+
+  <footer id="footer">
+    <article>
+      <div class="f_nav f_nav_set">
+        <div class="from">
+          <span>seoul, korea</span>
+        </div>
+        <div class="job">
+          <span>designer / developer</span>
+        </div>
+        <div class="scroll">
+          <span>scroll to explore</span>
+          <span class="scroll_arrow">↓</span>
+        </div>
+
+      </div>
+    </article>
+  </footer> <!-- #footer -->
+
+
+
+  <div class="cursor-dot"></div>
+  <div class="cursor-circle"></div>
+
+
+</body>
+
+</html>
