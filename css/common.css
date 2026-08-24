@@ -61,7 +61,6 @@ color: var(--black300);
  font-size: clamp(7px, 1vw, 11px);
   color: var(--black200);
   text-transform: uppercase;
-  margin-bottom: 3%;
 
 }
 
