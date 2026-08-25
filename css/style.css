@@ -770,7 +770,7 @@ a.contact_item:hover .contact_arrow {
   gap: var(--work-gap);
   overflow: visible;
   will-change: transform;
-  cursor: grab;
+  cursor: default;
   touch-action: pan-y;
   user-select: none;
 }
@@ -848,8 +848,7 @@ a.contact_item:hover .contact_arrow {
 }
 
 .work_item:hover,
-.work_item:focus-visible,
-.work_item.is-selected {
+.work_item:focus-visible {
   opacity: 1;
 }
 

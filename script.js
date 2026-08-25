@@ -8,10 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const nextButton = document.querySelector(".work_next");
     const dotsArea = document.querySelector(".work_dots");
     let currentIndex = 0;
-    let isDragging = false;
-    let didDrag = false;
-    let startX = 0;
-    let startTranslate = 0;
     let currentTranslate = 0;
 
     function getStep() {
@@ -93,52 +89,6 @@ document.addEventListener("DOMContentLoaded", function () {
     nextButton.addEventListener("click", function () {
       goToSlide(currentIndex + 1, true);
     });
-
-    workList.addEventListener("pointerdown", function (event) {
-      isDragging = true;
-      didDrag = false;
-      startX = event.clientX;
-      startTranslate = currentTranslate;
-      workList.setPointerCapture(event.pointerId);
-      workList.classList.add("is-dragging");
-      gsap.killTweensOf(workList);
-    });
-
-    workList.addEventListener("pointermove", function (event) {
-      if (!isDragging) return;
-
-      if (Math.abs(event.clientX - startX) > 8) didDrag = true;
-      const nextX = startTranslate + event.clientX - startX;
-      currentTranslate = nextX;
-      gsap.set(workList, { x: nextX });
-    });
-
-    function finishDrag(event) {
-      if (!isDragging) return;
-
-      isDragging = false;
-      workList.classList.remove("is-dragging");
-
-      if (workList.hasPointerCapture(event.pointerId)) {
-        workList.releasePointerCapture(event.pointerId);
-      }
-
-      const moved = event.clientX - startX;
-      if (Math.abs(moved) > 45) {
-        goToSlide(currentIndex + (moved < 0 ? 1 : -1), true);
-      } else {
-        goToSlide(currentIndex, true);
-      }
-    }
-
-    workList.addEventListener("pointerup", finishDrag);
-    workList.addEventListener("pointercancel", finishDrag);
-    workList.addEventListener("click", function (event) {
-      if (!didDrag) return;
-      event.preventDefault();
-      event.stopPropagation();
-      didDrag = false;
-    }, true);
 
     window.addEventListener("resize", function () {
       goToSlide(currentIndex, false);
