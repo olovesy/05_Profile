@@ -1,4 +1,31 @@
 document.addEventListener("DOMContentLoaded", function () {
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const progressBar = document.querySelector(".scroll_progress span");
+  const navLinks = Array.from(document.querySelectorAll(".nav a[href^='#']"));
+  const sections = navLinks.map(function(link){return document.querySelector(link.getAttribute("href"));}).filter(Boolean);
+
+  function updatePageState() {
+    if (progressBar) {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      progressBar.style.transform = "scaleX(" + (max > 0 ? window.scrollY / max : 0) + ")";
+    }
+    let activeId = "";
+    sections.forEach(function(section){if(section.getBoundingClientRect().top <= window.innerHeight * 0.42) activeId = section.id;});
+    navLinks.forEach(function(link){link.classList.toggle("is-active", link.getAttribute("href") === "#" + activeId);});
+  }
+  window.addEventListener("scroll", updatePageState, {passive:true});
+  window.addEventListener("resize", updatePageState);
+  updatePageState();
+
+  const revealTargets = document.querySelectorAll(".about_heading,.about_body,.work_left,.work_item");
+  if (reduceMotion || !("IntersectionObserver" in window)) {
+    revealTargets.forEach(function(el){el.classList.add("is-visible");});
+  } else {
+    const revealObserver = new IntersectionObserver(function(entries, observer){
+      entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add("is-visible");observer.unobserve(entry.target);}});
+    },{threshold:0.16});
+    revealTargets.forEach(function(el){el.classList.add("reveal");revealObserver.observe(el);});
+  }
   /* work 이미지 수동 슬라이더: 자동 재생 없음 */
   const workList = document.querySelector(".work_list");
 
@@ -146,7 +173,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const cursorDot = document.querySelector(".cursor-dot");
   const cursorCircle = document.querySelector(".cursor-circle");
 
-  if (cursorDot && cursorCircle) {
+  if (cursorDot && cursorCircle && !reduceMotion && window.matchMedia("(hover: hover)").matches) {
     let mouseX = 0;
     let mouseY = 0;
     let circleX = 0;
@@ -172,7 +199,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     moveCursor();
 
-    document.querySelectorAll("a").forEach(function (link) {
+    document.querySelectorAll("a, button").forEach(function (link) {
       link.addEventListener("mouseenter", function () {
         cursorCircle.classList.add("hover");
       });
