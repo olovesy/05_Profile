@@ -848,8 +848,7 @@ a.contact_item:hover .contact_arrow {
 }
 
 .work_item:hover,
-.work_item:focus-visible,
-.work_item.is-selected {
+.work_item:focus-visible {
   opacity: 1;
 }
 
