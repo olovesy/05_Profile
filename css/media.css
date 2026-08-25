@@ -505,7 +505,6 @@
   box-sizing: border-box;
 }
 
-.cover + .about,
 .about + .work,
 .work + .contact {
   border-top: 1px solid var(--black100);
@@ -821,4 +820,134 @@
   width: 100%;
   margin: clamp(54px, 7vw, 96px) 0 0;
   padding-top: 8px;
+}
+
+/* Final bilingual spacing alignment */
+:root {
+  --page-gutter: clamp(20px, 3vw, 40px);
+  --content-max: 1440px;
+  --section-padding: clamp(96px, 10vw, 144px);
+}
+
+#header .pc,
+#footer article {
+  padding-left: var(--page-gutter);
+  padding-right: var(--page-gutter);
+}
+
+#contents {
+  padding: 80px var(--page-gutter) 0;
+}
+
+.cover,
+.about,
+.work {
+  width: min(100%, var(--content-max));
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+.cover {
+  min-height: calc(100vh - 80px);
+  height: auto;
+  align-items: center;
+  gap: clamp(40px, 7vw, 112px);
+  padding: clamp(64px, 8vw, 120px) 0;
+}
+
+.cover .desc1,
+.cover .desc2,
+.cover_contact {
+  margin-left: 0;
+}
+
+.cover .desc1 {
+  min-height: 2.15em;
+  margin-top: 0;
+}
+
+.cover .desc2 {
+  min-height: 3.1em;
+  margin-top: 20px;
+}
+
+.cover .desc2 p:first-child {
+  padding-top: 0;
+}
+
+.cover_contact {
+  margin-top: 28px;
+}
+
+.cover .coverimg figure img {
+  display: block;
+  margin: 0 auto;
+}
+
+.cover + .about,
+.about + .work {
+  border-top: 1px solid var(--black100);
+}
+
+.about,
+.work {
+  padding-top: var(--section-padding);
+  padding-bottom: var(--section-padding);
+}
+
+.about_inner {
+  width: 100%;
+}
+
+.about_title {
+  min-height: 2.35em;
+}
+
+.about_lead {
+  min-height: 4.8em;
+}
+
+.about_story {
+  min-height: 4.8em;
+}
+
+.work_left .maintitle2 {
+  min-height: 2.35em;
+}
+
+html[lang="ko"] body,
+html[lang="ko"] button {
+  word-break: keep-all;
+}
+
+@media (max-width: 760px) {
+  :root {
+    --section-padding: 88px;
+  }
+
+  .cover {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 40px;
+    padding: 56px 0 88px;
+  }
+
+  .cover .desc1,
+  .cover .desc2,
+  .cover_contact {
+    margin-left: 0;
+  }
+
+  .cover .coverimg figure img {
+    width: min(72%, 340px);
+    margin: 0 auto;
+  }
+
+  .about_title,
+  .about_lead,
+  .about_story,
+  .work_left .maintitle2 {
+    min-height: 0;
+  }
 }
