@@ -505,6 +505,7 @@
   box-sizing: border-box;
 }
 
+.cover + .about,
 .about + .work,
 .work + .contact {
   border-top: 1px solid var(--black100);
