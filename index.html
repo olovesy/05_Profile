@@ -12,8 +12,7 @@
   <link rel="stylesheet" href="./css/font.css">
   <link rel="stylesheet" href="./css/common.css">
   <link rel="stylesheet" href="./css/media.css">
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
   <script src="./script.js" defer></script>
 </head>
 
@@ -23,7 +22,7 @@
   <header id="header">
     <div class="pc">
       <h2 class="logo ">
-        <a href="./index.html" data-en="seoyoung oh" data-ko="오서영">seoyoung oh</a>
+        <a href="./index.html" >seoyoung oh</a>
       </h2>
 
       <nav class="nav nav_set">
@@ -99,138 +98,152 @@
     </article> <!-- .cover -->
 
     <article class="about" id="about">
-      <div class="about_text ">
-        <div class="left">
-          <div class="about1 subtitle">
-            <p>01 / about</p>
-          </div>
-          <div class="about1_1 maintitle2 ">
-            <p>I create quiet,</p>
-            <p>clear, and</p>
-            <p>meaningful</p>
-            <p>experiences.</p>
-          </div>
-        </div> <!-- .left_2 -->
-
-        <div class="right_2">
-          <div class="aboutmemain title_small">about me</div>
-          <div class="aboutmedesc normalfont">
-            <p>I observe small details and turn</p>
-            <p>them into simple visual experiences.</p>
-            <p>I value clarity, curiosity, and</p>
-            <p>thoughtful connections.</p>
+      <div class="about_inner" id="about_inner">
+        <div class="about_heading" id="about_heading">
+          <div class="about_label subtitle" id="about_label">
+            <p data-en="01 / ABOUT" data-ko="01 / 소개">01 / ABOUT</p>
           </div>
 
-          <dl class="about_status normalfont">
-            <div>
-              <dt data-en="ROLE" data-ko="역할">ROLE</dt>
-              <dd data-en="DESIGNER / DEVELOPER" data-ko="디자이너 / 개발자">
-                DESIGNER / DEVELOPER
-              </dd>
+          <div class="about_title maintitle2" id="about_title">
+            <p data-en="Design," data-ko="디자인을 이해하고,">Design,</p>
+            <p data-en="built with care." data-ko="세심하게 구현합니다.">built with care.</p>
+          </div>
+        </div>
+
+        <div class="about_body" id="about_body">
+          <p class="about_lead title_small" id="about_lead"
+            data-en="I am Seoyoung Oh, a web publisher who connects design with code. I build clear, responsive interfaces that preserve the designer's intent across every screen."
+            data-ko="디자인과 코드를 연결하는 웹 퍼블리셔 오서영입니다. 디자이너의 의도가 어떤 화면에서도 자연스럽게 이어지도록 명확하고 반응형에 강한 인터페이스를 만듭니다.">
+            I am Seoyoung Oh, a web publisher who connects design with code. I build clear, responsive interfaces that preserve the designer's intent across every screen.
+          </p>
+
+          <p class="about_story normalfont" id="about_story"
+            data-en="New environments taught me to listen first, respect different perspectives, and solve problems with flexibility. I bring that attitude to collaboration, and improve each result by building, checking, and refining it carefully."
+            data-ko="새로운 환경에서 먼저 듣고 서로 다른 관점을 존중하며 유연하게 문제를 해결하는 법을 배웠습니다. 협업에서도 이 태도를 바탕으로 직접 구현하고 확인하며 결과를 꼼꼼하게 개선합니다.">
+            New environments taught me to listen first, respect different perspectives, and solve problems with flexibility. I bring that attitude to collaboration, and improve each result by building, checking, and refining it carefully.
+          </p>
+
+          <div class="about_profile" id="about_profile">
+            <div class="about_profile_item">
+              <span class="about_profile_name" data-en="ROLE" data-ko="역할">ROLE</span>
+              <span class="about_profile_value" data-en="Web publisher / designer" data-ko="웹 퍼블리셔 / 디자이너">Web publisher / designer</span>
             </div>
-
-            <div>
-              <dt data-en="FOCUS" data-ko="주요 분야">FOCUS</dt>
-              <dd data-en="VISUAL IDENTITY / WEB" data-ko="비주얼 아이덴티티 / 웹">
-                VISUAL IDENTITY / WEB
-              </dd>
+            <div class="about_profile_item">
+              <span class="about_profile_name" data-en="FOCUS" data-ko="강점">FOCUS</span>
+              <span class="about_profile_value" data-en="Responsive web / interaction / UI/UX" data-ko="반응형 웹 / 인터랙션 / UI/UX">Responsive web / interaction / UI/UX</span>
             </div>
-          </dl>
+            <div class="about_profile_item">
+              <span class="about_profile_name" data-en="TOOLS" data-ko="기술">TOOLS</span>
+              <span class="about_profile_value" data-en="HTML / CSS / JavaScript / GitHub / Figma / Generative AI" data-ko="HTML / CSS / JavaScript / GitHub / Figma / 생성형 AI"> JavaScript / GitHub / Figma / Generative AI / HTML / CSS </span>
+            </div>
+          </div>
 
-        </div><!-- .right_2 -->
-      </div><!-- .about_text -->
+          <div class="about_principles" id="about_principles">
+            <div class="about_principle">
+              <span>01</span>
+              <p data-en="Clear communication" data-ko="명확한 소통">Clear communication</p>
+            </div>
+            <div class="about_principle">
+              <span>02</span>
+              <p data-en="Flexible collaboration" data-ko="유연한 협업">Flexible collaboration</p>
+            </div>
+            <div class="about_principle">
+              <span>03</span>
+              <p data-en="Thoughtful implementation" data-ko="세심한 구현">Thoughtful implementation</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </article> <!-- .about -->
 
 
-   <article class="work" id="work">
+    <article class="work" id="work">
+
   <div class="work_left">
+
     <div class="subtitle">
-      <p>02 / SELECTED WORK</p>
+      <p data-en="02 / SELECTED WORK" data-ko="02 / 주요 작업">02 / SELECTED WORK</p>
     </div>
 
     <div class="maintitle2">
-      <p>Selected projects.</p>
+      <p data-en="Selected" data-ko="선별한 작업을">Selected</p>
+      <p data-en="projects." data-ko="소개합니다.">projects.</p>
     </div>
+
   </div>
 
-  <div class="work_slider">
-    <div class="work_list">
-      <figure class="work_item1 workimg">
-        <img src="./img/work01.png" alt="project 01">
+  <div class="work_body" id="work_body">
+    <div class="work_list" id="work_list">
+
+      <figure class="work_item">
+        <img src="./img/work03.png" alt="project 01">
       </figure>
 
-      <figure class="work_item2 workimg">
-        <img src="./img/work02.PNG" alt="project 02">
+      <figure class="work_item">
+        <img src="./img/work01.PNG" alt="project 02">
       </figure>
 
-      <figure class="work_item3 workimg">
+      <figure class="work_item">
         <img src="./img/work02.PNG" alt="project 03">
       </figure>
 
-      <figure class="work_item4 workimg">
-        <img src="./img/work01.png" alt="project 04">
-      </figure>
     </div>
 
-    <p class="work_guide">DRAG OR SCROLL TO EXPLORE</p>
+    <div class="work_controls" aria-label="Project slider controls">
+      <button type="button" class="work_arrow work_prev" aria-label="Previous project">←</button>
+      <div class="work_dots" aria-label="Choose project"></div>
+      <button type="button" class="work_arrow work_next" aria-label="Next project">→</button>
+    </div>
   </div>
+
 </article>
 
     <article class="contact" id="contact">
-      <div class="contact_left">
-        <div class="contact_label subtitle">
-          <p data-en="03 / CONTACT" data-ko="03 / 연락">03 / CONTACT</p>
+      <div class="contact_inner" id="contact_inner">
+        <div class="contact_heading" id="contact_heading">
+          <div class="contact_label subtitle" id="contact_label">
+            <p data-en="03 / CONTACT" data-ko="03 / 연락">03 / CONTACT</p>
+          </div>
+
+          <div class="contact_title maintitle2" id="contact_title">
+            <p data-en="Let's build something" data-ko="좋은 화면을 함께">Let's build something</p>
+            <p data-en="clear and meaningful." data-ko="만들어가고 싶습니다.">clear and meaningful.</p>
+          </div>
         </div>
 
-        <div class="contact_title maintitle2">
-          <p data-en="Let’s create" data-ko="좋은 아이디어를">Let’s turn</p>
-          <p data-en="something meaningful" data-ko="의미 있는 경험으로">thoughtful ideas</p>
-          <p data-en="together." data-ko="만들어갑니다.">into experiences.</p>
-        </div>
+        <div class="contact_body" id="contact_body">
+          <p class="contact_intro title_small" id="contact_intro"
+            data-en="I am ready to listen, learn, and turn thoughtful design into a reliable web experience. If you are looking for a responsible web publisher who communicates clearly, feel free to get in touch."
+            data-ko="디자인의 의도를 세심하게 이해하고 안정적인 웹 경험으로 구현하겠습니다. 명확하게 소통하고 책임감 있게 성장하는 웹 퍼블리셔를 찾고 계시다면 편하게 연락해 주세요.">
+            I am ready to listen, learn, and turn thoughtful design into a reliable web experience. If you are looking for a responsible web publisher who communicates clearly, feel free to get in touch.
+          </p>
 
-        <div class="contact_intro maintitle_small">
-          <p data-en="Have a project, an idea, or just want to say hello? Feel free to get in touch."
-            data-ko="프로젝트나 아이디어가 있거나, 가볍게 인사하고 싶다면 언제든 연락해 주세요.">Have a project, an idea, or just want to say hello?
-            Feel free to get in touch.</p>
-        </div>
+          <div class="contact_list" id="contact_list">
+            <a class="contact_item contact_email" id="contact_email" href="mailto:olovesy@naver.com">
+              <span class="contact_name" data-en="EMAIL" data-ko="이메일">EMAIL</span>
+              <span class="contact_value">seoyoung.oh@outlook.com</span>
+              <span class="contact_arrow" aria-hidden="true">↗</span>
+            </a>
 
-      </div>
+            <a class="contact_item contact_phone" id="contact_phone" href="tel:+821074461647">
+              <span class="contact_name" data-en="PHONE" data-ko="전화번호">PHONE</span>
+              <span class="contact_value">010-7446-1647</span>
+              <span class="contact_arrow" aria-hidden="true">↗</span>
+            </a>
 
-      <div class="contact_right">
-        <dl class="contact_status normalfont">
-          <div>
-            <dt data-en="LOCATION" data-ko="위치">LOCATION</dt>
-            <dd data-en="SEOUL, KOREA" data-ko="서울, 대한민국">SEOUL, KOREA</dd>
+            <a class="contact_item contact_github" id="contact_github"
+              href="https://github.com/olovesy/" target="_blank" rel="noopener noreferrer"
+              aria-label="Seoyoung Oh GitHub profile">
+              <span class="contact_name">GITHUB</span>
+              <span class="contact_value">github.com/olovesy</span>
+              <span class="contact_arrow" aria-hidden="true">↗</span>
+            </a>
           </div>
-          <div>
-            <dt data-en="AVAILABILITY" data-ko="작업 가능 여부">AVAILABILITY</dt>
-            <dd data-en="OPEN TO WORK" data-ko="협업 가능">OPEN TO WORK</dd>
-          </div>
-          <div>
-            <dt data-en="TIMEZONE" data-ko="시간대">TIMEZONE</dt>
-            <dd>GMT+9</dd>
-          </div>
-        </dl>
 
-        <div class="contact_links normalfont">
-          <a href="mailto:hello@seoyoung.com">
-            <span data-en="EMAIL" data-ko="이메일">EMAIL</span>
-            <em>seoyoung.oh@outlook.com</em>
-          </a>
-          <a href="tel:01000000000">
-            <span data-en="PHONE" data-ko="전화번호">PHONE</span>
-            <em>010-7446-1647</em>
-          </a>
-          <a href="#" aria-label="GitHub link placeholder">
-            <span data-en="GITHUB" data-ko="깃허브">GITHUB</span>
-            <em>github.com/username</em>
-            <b aria-hidden="true">↗</b>
-          </a>
-          <a href="#" aria-label="Notion link placeholder">
-            <span data-en="NOTION" data-ko="노션">NOTION</span>
-            <em>notion.site/portfolio</em>
-            <b aria-hidden="true">↗</b>
-          </a>
+          <div class="contact_meta normalfont" id="contact_meta">
+      
+            <span data-en="Available for opportunities" data-ko="새로운 기회를 기다리고 있습니다">Available for opportunities</span>
+          </div>
         </div>
       </div>
     </article> <!-- .contact -->

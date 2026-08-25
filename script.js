@@ -1,47 +1,150 @@
 document.addEventListener("DOMContentLoaded", function () {
-  /* 섹션 제목이 위에서 아래로 나타나는 효과 */
-  if (window.gsap && window.ScrollTrigger) {
-    gsap.registerPlugin(ScrollTrigger);
+  /* work 이미지 수동 슬라이더: 자동 재생 없음 */
+  const workList = document.querySelector(".work_list");
 
-    const commonTextSelector = [
-      ".maintitle",
-      ".maintitle2",
-      ".maintitle_small",
-      ".title_small",
-      ".subtitle",
-      ".normalfont"
-    ].join(", ");
+  if (workList && window.gsap) {
+    const originalItems = Array.from(workList.children);
+    const prevButton = document.querySelector(".work_prev");
+    const nextButton = document.querySelector(".work_next");
+    const dotsArea = document.querySelector(".work_dots");
+    let currentIndex = 0;
+    let isDragging = false;
+    let didDrag = false;
+    let startX = 0;
+    let startTranslate = 0;
+    let currentTranslate = 0;
 
-    gsap.utils.toArray(commonTextSelector).forEach(function (textBlock) {
-      const paragraphs = textBlock.querySelectorAll(":scope > p");
-      const targets = paragraphs.length ? paragraphs : textBlock;
+    function getStep() {
+      return originalItems[1]
+        ? originalItems[1].offsetLeft - originalItems[0].offsetLeft
+        : originalItems[0].offsetWidth;
+    }
 
-      gsap.from(targets, {
-        y: -38,
-        autoAlpha: 0,
-        duration: 1.25,
-        stagger: 0.12,
-        ease: "power4.out",
-        scrollTrigger: {
-          trigger: textBlock,
-          start: "top 82%",
-          toggleActions: "play none none reverse"
+    function getVisibleCount() {
+      if (window.innerWidth <= 760) return 1;
+      if (window.innerWidth <= 1180) return 2;
+      return 3;
+    }
+
+    function getMaxStartIndex() {
+      return Math.max(0, originalItems.length - getVisibleCount());
+    }
+
+    function updateDots() {
+      dotsArea.querySelectorAll("button").forEach(function (dot, index) {
+        const isActive = index === currentIndex;
+        dot.classList.toggle("active", isActive);
+        dot.setAttribute("aria-current", isActive ? "true" : "false");
+      });
+
+      originalItems.forEach(function (item, index) {
+        item.classList.toggle("is-selected", index === currentIndex);
+        item.setAttribute("aria-selected", index === currentIndex ? "true" : "false");
+      });
+
+      prevButton.disabled = currentIndex === 0;
+      nextButton.disabled = currentIndex === originalItems.length - 1;
+    }
+
+    function goToSlide(index, animate) {
+      currentIndex = Math.max(0, Math.min(originalItems.length - 1, index));
+      const trackIndex = Math.min(currentIndex, getMaxStartIndex());
+      const target = -getStep() * trackIndex;
+      updateDots();
+
+      gsap.to(workList, {
+        x: target,
+        duration: animate === false ? 0 : 0.55,
+        ease: "power2.inOut",
+        onUpdate: function () {
+          currentTranslate = Number(gsap.getProperty(workList, "x"));
+        }
+      });
+    }
+
+    originalItems.forEach(function (_, index) {
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.setAttribute("aria-label", "Go to project " + (index + 1));
+      dot.addEventListener("click", function () {
+        goToSlide(index, true);
+      });
+      dotsArea.appendChild(dot);
+    });
+
+    originalItems.forEach(function (item, index) {
+      item.setAttribute("role", "option");
+      item.setAttribute("tabindex", "0");
+      item.addEventListener("click", function () {
+        goToSlide(index, true);
+      });
+      item.addEventListener("keydown", function (event) {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          goToSlide(index, true);
         }
       });
     });
-  }
 
-  /* 로고를 누르면 페이지 맨 위로 이동 */
-  const logoLink = document.querySelector(".logo a");
-
-  if (logoLink) {
-    logoLink.addEventListener("click", function (event) {
-      event.preventDefault();
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
+    prevButton.addEventListener("click", function () {
+      goToSlide(currentIndex - 1, true);
     });
+
+    nextButton.addEventListener("click", function () {
+      goToSlide(currentIndex + 1, true);
+    });
+
+    workList.addEventListener("pointerdown", function (event) {
+      isDragging = true;
+      didDrag = false;
+      startX = event.clientX;
+      startTranslate = currentTranslate;
+      workList.setPointerCapture(event.pointerId);
+      workList.classList.add("is-dragging");
+      gsap.killTweensOf(workList);
+    });
+
+    workList.addEventListener("pointermove", function (event) {
+      if (!isDragging) return;
+
+      if (Math.abs(event.clientX - startX) > 8) didDrag = true;
+      const nextX = startTranslate + event.clientX - startX;
+      currentTranslate = nextX;
+      gsap.set(workList, { x: nextX });
+    });
+
+    function finishDrag(event) {
+      if (!isDragging) return;
+
+      isDragging = false;
+      workList.classList.remove("is-dragging");
+
+      if (workList.hasPointerCapture(event.pointerId)) {
+        workList.releasePointerCapture(event.pointerId);
+      }
+
+      const moved = event.clientX - startX;
+      if (Math.abs(moved) > 45) {
+        goToSlide(currentIndex + (moved < 0 ? 1 : -1), true);
+      } else {
+        goToSlide(currentIndex, true);
+      }
+    }
+
+    workList.addEventListener("pointerup", finishDrag);
+    workList.addEventListener("pointercancel", finishDrag);
+    workList.addEventListener("click", function (event) {
+      if (!didDrag) return;
+      event.preventDefault();
+      event.stopPropagation();
+      didDrag = false;
+    }, true);
+
+    window.addEventListener("resize", function () {
+      goToSlide(currentIndex, false);
+    });
+
+    updateDots();
   }
 
   /* 언어 번역 */
@@ -129,105 +232,4 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   }
-
-  document.addEventListener("DOMContentLoaded", function () {
-  const workSlider = document.querySelector(".work_slider");
-  const workList = document.querySelector(".work_list");
-
-  if (!workSlider || !workList || !window.gsap) return;
-
-  const position = {
-    x: 0
-  };
-
-  let minX = 0;
-  let dragging = false;
-  let previousX = 0;
-
-  /* 이동할 수 있는 마지막 위치 계산 */
-  function updateSlider() {
-    minX = Math.min(
-      0,
-      workSlider.clientWidth - workList.scrollWidth
-    );
-
-    position.x = gsap.utils.clamp(minX, 0, position.x);
-
-    gsap.set(workList, {
-      x: position.x
-    });
-  }
-
-// .work
-window.addEventListener("load", () => {
-  const slider = document.querySelector(".work_slider");
-  const list = document.querySelector(".work_list");
-
-  // .work 요소가 없으면 실행하지 않습니다.
-  if (!slider || !list) return;
-
-  // 원본 카드들을 복사해서 무한 슬라이드처럼 보이게 합니다.
-  list.innerHTML += list.innerHTML;
-
-  // 자동 가로 이동
-  const autoSlide = gsap.to(list, {
-    xPercent: -50,
-    duration: 20,
-    ease: "none",
-    repeat: -1,
-    paused: false
-  });
-
-  // 마우스를 올리면 멈추고, 벗어나면 다시 움직입니다.
-  slider.addEventListener("mouseenter", () => {
-    autoSlide.pause();
-  });
-
-  slider.addEventListener("mouseleave", () => {
-    if (!isDragging) autoSlide.resume();
-  });
-
-  // 드래그에 필요한 변수
-  let isDragging = false;
-  let startX = 0;
-  let startProgress = 0;
-
-  // 마우스 또는 손가락을 누른 순간
-  slider.addEventListener("pointerdown", (event) => {
-    isDragging = true;
-    startX = event.clientX;
-    startProgress = autoSlide.progress();
-
-    slider.classList.add("dragging");
-    slider.setPointerCapture(event.pointerId);
-    autoSlide.pause();
-  });
-
-  // 드래그하는 동안 카드 이동
-  slider.addEventListener("pointermove", (event) => {
-    if (!isDragging) return;
-
-    const distance = event.clientX - startX;
-    const moveAmount = distance / slider.clientWidth;
-
-    autoSlide.progress(startProgress - moveAmount);
-  });
-
-  // 마우스 또는 손가락을 뗀 순간
-  slider.addEventListener("pointerup", (event) => {
-    isDragging = false;
-    slider.classList.remove("dragging");
-    slider.releasePointerCapture(event.pointerId);
-    autoSlide.resume();
-  });
-
-  // 드래그가 취소된 경우
-  slider.addEventListener("pointercancel", () => {
-    isDragging = false;
-    slider.classList.remove("dragging");
-    autoSlide.resume();
-  });
-});
-
-
 });
