@@ -191,6 +191,12 @@
     margin-left: 17%;
   }
 
+  .cover_contact {
+    margin-left: 17%;
+    margin-top: 20px;
+    gap: 10px 18px;
+  }
+
   .cover .coverimg figure img {
 
     width: 43%;

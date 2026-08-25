@@ -280,6 +280,31 @@ body {
     padding-top: 3%;
 }
 
+.cover_contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 24px;
+    margin-top: 32px;
+    margin-left: 20%;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+}
+
+.cover_contact a,
+.cover_contact span {
+    color: var(--black);
+}
+
+.cover_contact a {
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+.cover_contact a:hover,
+.cover_contact a:focus-visible {
+    border-bottom-color: currentColor;
+}
+
 .cover .coverimg {}
 
 .cover .coverimg figure {}
